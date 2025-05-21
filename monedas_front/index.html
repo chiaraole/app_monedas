@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inkambio App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOGIN -------------------------------------------------------- -->
+  <section id="login" class="pantalla">
+    <h2>Iniciar sesión</h2>
+    <input type="text"     id="loginUser" placeholder="Usuario" />
+    <input type="password" id="loginPass" placeholder="Contraseña" />
+    <button onclick="ingresarApp()">Entrar</button>
+    <p>¿No tienes cuenta? <a href="#" onclick="mostrarPantalla('registro')">Regístrate aquí</a></p>
+  </section>
+
+  <!-- REGISTRO ----------------------------------------------------- -->
+  <section id="registro" class="pantalla oculto">
+    <h2>Registro</h2>
+    <input type="text" placeholder="Nombre completo" />
+    <input type="text" placeholder="Correo electrónico" />
+    <input type="text" placeholder="Usuario" />
+    <input type="password" placeholder="Contraseña" />
+    <button onclick="mostrarPantalla('login')">Registrar y volver al login</button>
+  </section>
+
+  <!-- MENÚ --------------------------------------------------------- -->
+  <nav id="menu">
+    <button onclick="mostrarPantalla('conversion')">Conversión</button>
+    <button class="disabled" onclick="mostrarPantalla('cuentas')">Cuentas</button>
+    <button class="disabled" onclick="mostrarPantalla('historial')">Historial</button>
+    <button class="disabled" onclick="mostrarPantalla('graficos')">Gráficos</button>
+    <button class="disabled" onclick="mostrarPantalla('seguridad')">Seguridad</button>
+    <button class="disabled" id="notificacionesBtn" onclick="mostrarPantalla('notificaciones')">Notificaciones</button>
+    <button id="loginBtn" onclick="mostrarPantalla('login')">Login / Registro</button>
+  </nav>
+
+  <!-- CONVERSIÓN --------------------------------------------------- -->
+  <section id="conversion" class="pantalla oculto">
+    <h2>Conversor de monedas</h2>
+    <input type="number" id="amount" placeholder="Monto" />
+    <select id="from">
+      <option value="PEN">PEN</option><option value="USD">USD</option><option value="EUR">EUR</option>
+    </select>
+    <select id="to">
+      <option value="USD">USD</option><option value="PEN">PEN</option><option value="EUR">EUR</option>
+    </select>
+    <button onclick="convertir()">Convertir ahora</button>
+
+    <p id="resultado" class="resultado"></p>
+  </section>
+
+  <!-- CUENTAS ------------------------------------------------------ -->
+  <section id="cuentas" class="pantalla oculto">
+    <h2>Mis saldos</h2>
+    <ul id="cuentasLista"></ul>
+  </section>
+
+  <!-- HISTORIAL ---------------------------------------------------- -->
+  <section id="historial" class="pantalla oculto">
+    <h2>Historial de transacciones</h2>
+    <div id="histList" class="transaccion"></div>
+    <p id="histVacio" class="mensaje">Aún no tienes transacciones registradas.</p>
+  </section>
+
+  <!-- GRÁFICOS ----------------------------------------------------- -->
+  <section id="graficos" class="pantalla oculto">
+    <h2>Gráfico interactivo de tasas</h2>
+
+    <label for="grafFrom">De:</label>
+    <select id="grafFrom" onchange="actualizarGrafico()">
+      <option value="USD">🇺🇸 USD</option><option value="PEN">🇵🇪 PEN</option><option value="EUR">🇪🇺 EUR</option>
+    </select>
+
+    <label for="grafTo" style="margin-left:12px;">A:</label>
+    <select id="grafTo" onchange="actualizarGrafico()">
+      <option value="PEN">🇵🇪 PEN</option><option value="USD">🇺🇸 USD</option><option value="EUR">🇪🇺 EUR</option>
+    </select>
+
+    <p id="grafInfo" style="margin-top:1rem;font-weight:bold;"></p>
+  </section>
+
+  <!-- SEGURIDAD / NOTAS DEMO -------------------------------------- -->
+  <section id="seguridad" class="pantalla oculto">
+    <h2>Configuración de seguridad</h2>
+    <label><input type="checkbox" /> Activar verificación en 2 pasos (2FA)</label>
+    <p class="seguridad">🛡 Cumplimos con normas KYC / AML</p>
+  </section>
+
+  <section id="notificaciones" class="pantalla oculto">
+    <h2>Notificaciones</h2>
+    <ul><li>🔔 Aquí aparecerán tus alertas de tasa.</li></ul>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

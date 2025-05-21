@@ -1,0 +1,8 @@
+{
+    "users": [
+      { "id": "X", "name": "Usuario X", "pen": 1000, "usd": 300 },
+      { "id": "Y", "name": "Usuario Y", "pen": 500,  "usd": 600 }
+    ],
+    "history": []
+  }
+  
